@@ -1,5 +1,4 @@
-import { Link } from "@tanstack/react-router";
-import Container from "../global/container";
+import Container from '../global/container'
 import Icons from "../global/icons";
 
 const Footer = () => {
@@ -28,24 +27,24 @@ const Footer = () => {
                             </h3>
                             <ul className="mt-4 text-sm text-muted-foreground space-y-4">
                                 <li className="mt-2">
-                                    <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                    <a href="#" className="link hover:text-foreground transition-all duration-300">
                                         Features
-                                    </Link>
+                                    </a>
                                 </li>
                                 <li className="mt-2">
-                                    <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                    <a href="#" className="link hover:text-foreground transition-all duration-300">
                                         Pricing
-                                    </Link>
+                                    </a>
                                 </li>
                                 <li className="mt-2">
-                                    <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                    <a href="#" className="link hover:text-foreground transition-all duration-300">
                                         Testimonials
-                                    </Link>
+                                    </a>
                                 </li>
                                 <li className="mt-2">
-                                    <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                    <a href="#" className="link hover:text-foreground transition-all duration-300">
                                         Supported Languages
-                                    </Link>
+                                    </a>
                                 </li>
                             </ul>
                         </Container>
@@ -56,24 +55,24 @@ const Footer = () => {
                                 </h3>
                                 <ul className="mt-4 text-sm text-muted-foreground space-y-4">
                                     <li>
-                                        <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                        <a href="#" className="link hover:text-foreground transition-all duration-300">
                                             Content Creators
-                                        </Link>
+                                        </a>
                                     </li>
                                     <li className="mt-2">
-                                        <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                        <a href="#" className="link hover:text-foreground transition-all duration-300">
                                             Businesses
-                                        </Link>
+                                        </a>
                                     </li>
                                     <li className="mt-2">
-                                        <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                        <a href="#" className="link hover:text-foreground transition-all duration-300">
                                             Education
-                                        </Link>
+                                        </a>
                                     </li>
                                     <li className="mt-2">
-                                        <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                        <a href="#" className="link hover:text-foreground transition-all duration-300">
                                             Enterprise
-                                        </Link>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -86,19 +85,19 @@ const Footer = () => {
                             </h3>
                             <ul className="mt-4 text-sm text-muted-foreground space-y-4">
                                 <li className="mt-2">
-                                    <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                    <a href="#" className="link hover:text-foreground transition-all duration-300">
                                         Blog
-                                    </Link>
+                                    </a>
                                 </li>
                                 <li className="mt-2">
-                                    <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                    <a href="#" className="link hover:text-foreground transition-all duration-300">
                                         Translation Guides
-                                    </Link>
+                                    </a>
                                 </li>
                                 <li className="mt-2">
-                                    <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                    <a href="#" className="link hover:text-foreground transition-all duration-300">
                                         Support
-                                    </Link>
+                                    </a>
                                 </li>
                             </ul>
                         </Container>
@@ -109,19 +108,19 @@ const Footer = () => {
                                 </h3>
                                 <ul className="mt-4 text-sm text-muted-foreground space-y-4">
                                     <li>
-                                        <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                        <a href="#" className="link hover:text-foreground transition-all duration-300">
                                             About Us
-                                        </Link>
+                                        </a>
                                     </li>
                                     <li className="mt-2">
-                                        <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                        <a href="#" className="link hover:text-foreground transition-all duration-300">
                                             Privacy Policy
-                                        </Link>
+                                        </a>
                                     </li>
                                     <li className="mt-2">
-                                        <Link href="#" className="link hover:text-foreground transition-all duration-300">
+                                        <a href="#" className="link hover:text-foreground transition-all duration-300">
                                             Terms & Conditions
-                                        </Link>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>

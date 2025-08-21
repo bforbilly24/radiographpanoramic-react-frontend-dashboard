@@ -52,7 +52,7 @@ const CTA = () => {
               dan ambil keputusan terbaik dalam hitungan menit.
             </span>
           </p>
-          <Link href='#pricing' className='mt-8'>
+          <Link to="/" search={{ section: 'pricing' }} className='mt-8'>
             <Button size='lg'>Mulai Sekarang</Button>
           </Link>
         </div>

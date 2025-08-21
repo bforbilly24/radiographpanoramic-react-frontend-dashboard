@@ -7,6 +7,11 @@ interface BreadcrumbItem {
   href: string
 }
 
+interface RouteContext {
+  breadcrumb?: string
+  [key: string]: unknown
+}
+
 function TopBreadcrumb({
   className,
   ...props
@@ -15,9 +20,9 @@ function TopBreadcrumb({
 
   // Build breadcrumb items from route matches
   const breadcrumbs: BreadcrumbItem[] = matches
-    .filter((match) => match.__routeContext?.breadcrumb)
+    .filter((match) => (match.context as RouteContext)?.breadcrumb)
     .map((match) => ({
-      title: match.__routeContext.breadcrumb as string,
+      title: (match.context as RouteContext).breadcrumb as string,
       href: match.pathname,
     }))
 
