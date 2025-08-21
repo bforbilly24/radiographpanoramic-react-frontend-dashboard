@@ -16,7 +16,6 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as authSignUpImport } from './routes/(auth)/sign-up'
 import { Route as authSignInImport } from './routes/(auth)/sign-in'
 import { Route as authOtpImport } from './routes/(auth)/otp'
-import { Route as auth500Import } from './routes/(auth)/500'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard/route'
 import { Route as AuthenticatedDashboardIndexImport } from './routes/_authenticated/dashboard/index'
 import { Route as AuthenticatedDashboardRadiographsIndexImport } from './routes/_authenticated/dashboard/radiographs/index'
@@ -124,13 +123,11 @@ const authForgotPasswordLazyRoute = authForgotPasswordLazyImport
     import('./routes/(auth)/forgot-password.lazy').then((d) => d.Route),
   )
 
-const authSignUpRoute = authSignUpImport
-  .update({
-    id: '/(auth)/sign-up',
-    path: '/sign-up',
-    getParentRoute: () => rootRoute,
-  } as any)
-  .lazy(() => import('./routes/(auth)/sign-up.lazy').then((d) => d.Route))
+const authSignUpRoute = authSignUpImport.update({
+  id: '/(auth)/sign-up',
+  path: '/sign-up',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const authSignInRoute = authSignInImport.update({
   id: '/(auth)/sign-in',
@@ -141,12 +138,6 @@ const authSignInRoute = authSignInImport.update({
 const authOtpRoute = authOtpImport.update({
   id: '/(auth)/otp',
   path: '/otp',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const auth500Route = auth500Import.update({
-  id: '/(auth)/500',
-  path: '/500',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -275,13 +266,6 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
-      parentRoute: typeof rootRoute
-    }
-    '/(auth)/500': {
-      id: '/(auth)/500'
-      path: '/500'
-      fullPath: '/500'
-      preLoaderRoute: typeof auth500Import
       parentRoute: typeof rootRoute
     }
     '/(auth)/otp': {
@@ -485,7 +469,6 @@ const AuthenticatedDashboardRouteRouteWithChildren =
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/dashboard': typeof AuthenticatedDashboardRouteRouteWithChildren
-  '/500': typeof errors500LazyRoute
   '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
@@ -494,6 +477,7 @@ export interface FileRoutesByFullPath {
   '/401': typeof errors401LazyRoute
   '/403': typeof errors403LazyRoute
   '/404': typeof errors404LazyRoute
+  '/500': typeof errors500LazyRoute
   '/503': typeof errors503LazyRoute
   '/dashboard/settings': typeof AuthenticatedDashboardSettingsRouteLazyRouteWithChildren
   '/dashboard/': typeof AuthenticatedDashboardIndexRoute
@@ -509,7 +493,6 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '/500': typeof errors500LazyRoute
   '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
@@ -518,6 +501,7 @@ export interface FileRoutesByTo {
   '/401': typeof errors401LazyRoute
   '/403': typeof errors403LazyRoute
   '/404': typeof errors404LazyRoute
+  '/500': typeof errors500LazyRoute
   '/503': typeof errors503LazyRoute
   '/dashboard': typeof AuthenticatedDashboardIndexRoute
   '/dashboard/settings/account': typeof AuthenticatedDashboardSettingsAccountLazyRoute
@@ -534,7 +518,6 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteRouteWithChildren
-  '/(auth)/500': typeof auth500Route
   '/(auth)/otp': typeof authOtpRoute
   '/(auth)/sign-in': typeof authSignInRoute
   '/(auth)/sign-up': typeof authSignUpRoute
@@ -562,7 +545,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/dashboard'
-    | '/500'
     | '/otp'
     | '/sign-in'
     | '/sign-up'
@@ -571,6 +553,7 @@ export interface FileRouteTypes {
     | '/401'
     | '/403'
     | '/404'
+    | '/500'
     | '/503'
     | '/dashboard/settings'
     | '/dashboard/'
@@ -585,7 +568,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/500'
     | '/otp'
     | '/sign-in'
     | '/sign-up'
@@ -594,6 +576,7 @@ export interface FileRouteTypes {
     | '/401'
     | '/403'
     | '/404'
+    | '/500'
     | '/503'
     | '/dashboard'
     | '/dashboard/settings/account'
@@ -608,7 +591,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated/dashboard'
-    | '/(auth)/500'
     | '/(auth)/otp'
     | '/(auth)/sign-in'
     | '/(auth)/sign-up'
@@ -635,7 +617,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AuthenticatedDashboardRouteRoute: typeof AuthenticatedDashboardRouteRouteWithChildren
-  auth500Route: typeof auth500Route
   authOtpRoute: typeof authOtpRoute
   authSignInRoute: typeof authSignInRoute
   authSignUpRoute: typeof authSignUpRoute
@@ -652,7 +633,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AuthenticatedDashboardRouteRoute:
     AuthenticatedDashboardRouteRouteWithChildren,
-  auth500Route: auth500Route,
   authOtpRoute: authOtpRoute,
   authSignInRoute: authSignInRoute,
   authSignUpRoute: authSignUpRoute,
@@ -677,7 +657,6 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/_authenticated/dashboard",
-        "/(auth)/500",
         "/(auth)/otp",
         "/(auth)/sign-in",
         "/(auth)/sign-up",
@@ -702,9 +681,6 @@ export const routeTree = rootRoute
         "/_authenticated/dashboard/help-center/",
         "/_authenticated/dashboard/users/"
       ]
-    },
-    "/(auth)/500": {
-      "filePath": "(auth)/500.tsx"
     },
     "/(auth)/otp": {
       "filePath": "(auth)/otp.tsx"
