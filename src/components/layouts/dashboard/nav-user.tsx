@@ -9,7 +9,7 @@ import {
 } from 'lucide-react'
 import { useAuth } from '@/hooks/use-auth'
 import { useAuthStore } from '@/stores/authStore'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/shadcn/avatar'
+import { Avatar, AvatarFallback } from '@/components/ui/shadcn/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
