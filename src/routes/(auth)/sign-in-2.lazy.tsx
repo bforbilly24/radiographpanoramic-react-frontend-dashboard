@@ -1,3 +1,4 @@
+// src/routes/(auth)/sign-in-2.lazy.tsx
 import { createLazyFileRoute } from '@tanstack/react-router'
 import SignIn2 from '@/features/auth/sign-in/sign-in-2'
 

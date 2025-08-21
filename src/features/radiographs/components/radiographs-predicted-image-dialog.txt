@@ -1,0 +1,177 @@
+import { useState } from 'react'
+import type { Row } from '@tanstack/react-table'
+import { apiUrl } from '@/types/environment'
+import { RadiographResponse } from '@/types/radiograph'
+import { DownloadIcon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from '@/components/ui/dialog'
+import { ImageCell } from './image-cell'
+
+interface RadiographsPredictedImageDialogProps {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+  imageUrl: string
+  patientName: string
+  detectedConditions: RadiographResponse['detected_conditions']
+}
+
+function RadiographsPredictedImageDialog({
+  open,
+  onOpenChange,
+  imageUrl,
+  patientName,
+  detectedConditions,
+}: RadiographsPredictedImageDialogProps) {
+  const diseaseLabels = [
+    {
+      name: 'Impaksi',
+      color: '#B83DF5',
+      active: detectedConditions.has_impaksi,
+    },
+    { name: 'Karies', color: '#DDFF33', active: detectedConditions.has_karies },
+    {
+      name: 'Lesi Periapikal',
+      color: '#2A7DD1',
+      active: detectedConditions.has_lesi_periapikal,
+    },
+    {
+      name: 'Resorpsi',
+      color: '#FA3253',
+      active: detectedConditions.has_resorpsi,
+    },
+  ]
+
+  const handleImageClick = () => {
+    window.open(imageUrl, '_blank')
+  }
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className='sm:max-w-[900px] max-w-lg flex flex-col gap-y-4'>
+        <DialogTitle>Detail Radiograph</DialogTitle>
+        <DialogDescription>
+          View the predicted radiograph and detected conditions for{' '}
+          {patientName}.
+        </DialogDescription>
+        <div className='flex flex-col gap-y-1'>
+          <h6 className='text-lg font-semibold'>Detail Radiograph</h6>
+          <p className='text-base font-base'>
+            Detail disease radiograph panoramic.
+          </p>
+        </div>
+        <div className='flex flex-row w-full items-start justify-center gap-x-4'>
+          <div className='flex flex-col items-center justify-center gap-4'>
+            <img
+              src={imageUrl}
+              alt={`Predicted radiograph of ${patientName}`}
+              className='max-h-[48rem] w-auto object-contain rounded-lg cursor-pointer'
+              onClick={handleImageClick}
+              onError={() => console.warn('Failed to load image:', imageUrl)}
+            />
+            <p className='text-sm text-muted-foreground'>
+              Predicted radiograph for {patientName}
+            </p>
+          </div>
+
+          <div className='flex flex-col w-full gap-y-4 justify-between items-start'>
+            <h4 className='text-lg font-medium text-foreground'>
+              Detected Conditions
+            </h4>
+            <div className='flex flex-col w-full gap-y-3'>
+              {diseaseLabels.map((disease) => (
+                <div
+                  key={disease.name}
+                  className='flex flex-row items-center gap-x-2 justify-start'
+                >
+                  <div
+                    className='size-8 rounded-sm'
+                    style={{
+                      backgroundColor: disease.active
+                        ? disease.color
+                        : '#E5E7EB',
+                      opacity: disease.active ? 1 : 0.5,
+                    }}
+                  />
+                  <p
+                    className={`text-sm font-medium ${
+                      disease.active
+                        ? 'text-foreground'
+                        : 'text-muted-foreground'
+                    }`}
+                  >
+                    {disease.name}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <Button
+              variant='default'
+              size='lg'
+              className='bg-primary w-full gap-x-2'
+              onClick={() => {
+                const link = document.createElement('a')
+                link.href = imageUrl
+                link.download = `predicted_radiograph_${patientName}.jpg`
+                link.click()
+              }}
+            >
+              <DownloadIcon />
+              Download
+            </Button>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+interface RadiographsPredictedCellProps {
+  row: Row<RadiographResponse>
+}
+
+function RadiographsPredictedCell({ row }: RadiographsPredictedCellProps) {
+  const [showDialog, setShowDialog] = useState(false)
+  const predictedImage = row.getValue('predicted_file') as string | null
+  const patientName = row.original.patient_name
+  const detectedConditions = row.original.detected_conditions
+
+  if (!predictedImage) {
+    return <span className='text-muted-foreground'>No Image</span>
+  }
+
+  // Prepend apiUrl if predictedImage is a relative path
+  const imageUrl = predictedImage.startsWith('data:image')
+    ? predictedImage
+    : `${apiUrl}/${predictedImage.replace(/^\/+/, '')}`
+
+  return (
+    <div className='flex items-center justify-start'>
+      <Button
+        variant='ghost'
+        className='p-0 hover:bg-transparent'
+        onClick={() => setShowDialog(true)}
+      >
+        <ImageCell
+          path={predictedImage}
+          alt={`Predicted radiograph of ${patientName}`}
+          className='size-20 object-cover rounded-md border hover:border-primary transition-colors'
+        />
+      </Button>
+
+      <RadiographsPredictedImageDialog
+        open={showDialog}
+        onOpenChange={setShowDialog}
+        imageUrl={imageUrl}
+        patientName={patientName}
+        detectedConditions={detectedConditions}
+      />
+    </div>
+  )
+}
+
+export { RadiographsPredictedCell }

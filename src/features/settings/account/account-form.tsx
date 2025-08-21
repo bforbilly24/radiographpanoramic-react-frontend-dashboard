@@ -5,8 +5,8 @@ import { CalendarIcon, CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { cn } from '@/lib/utils'
 import { toast } from '@/hooks/use-toast'
-import { Button } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
+import { Button } from '@/components/ui/shadcn/button'
+import { Calendar } from '@/components/ui/shadcn/calendar'
 import {
   Command,
   CommandEmpty,
@@ -14,7 +14,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command'
+} from '@/components/ui/shadcn/command'
 import {
   Form,
   FormControl,
@@ -23,13 +23,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+} from '@/components/ui/shadcn/form'
+import { Input } from '@/components/ui/shadcn/input'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@/components/ui/shadcn/popover'
 
 const languages = [
   { label: 'English', value: 'en' },

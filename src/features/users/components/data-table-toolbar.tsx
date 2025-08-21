@@ -1,7 +1,7 @@
 import { Cross2Icon } from '@radix-ui/react-icons'
 import { Table } from '@tanstack/react-table'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/shadcn/button'
+import { Input } from '@/components/ui/shadcn/input'
 import { userTypes } from '../data/data'
 import { DataTableFacetedFilter } from './data-table-faceted-filter'
 import { DataTableViewOptions } from './data-table-view-options'
@@ -19,7 +19,7 @@ export function DataTableToolbar<TData>({
     <div className='flex items-center justify-between'>
       <div className='flex flex-1 flex-col-reverse items-start gap-y-2 sm:flex-row sm:items-center sm:space-x-2'>
         <Input
-          placeholder='Filter tasks...'
+          placeholder='Filter radiographs...'
           value={
             (table.getColumn('username')?.getFilterValue() as string) ?? ''
           }

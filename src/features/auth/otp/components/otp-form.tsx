@@ -5,16 +5,16 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from '@tanstack/react-router'
 import { cn } from '@/lib/utils'
 import { toast } from '@/hooks/use-toast'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/shadcn/button'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Separator } from '@/components/ui/separator'
+} from '@/components/ui/shadcn/form'
+import { Input } from '@/components/ui/shadcn/input'
+import { Separator } from '@/components/ui/shadcn/separator'
 import { PinInput, PinInputField } from '@/components/pin-input'
 
 type OtpFormProps = HTMLAttributes<HTMLDivElement>

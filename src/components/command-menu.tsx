@@ -7,7 +7,6 @@ import {
   IconSun,
 } from '@tabler/icons-react'
 import { useSearch } from '@/context/search-context'
-import { useTheme } from '@/context/theme-context'
 import {
   CommandDialog,
   CommandEmpty,
@@ -16,9 +15,10 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '@/components/ui/command'
-import { sidebarData } from './layout/data/sidebar-data'
-import { ScrollArea } from './ui/scroll-area'
+} from '@/components/ui/shadcn/command'
+import { sidebarData } from './layouts/dashboard/data/sidebar-data'
+import { ScrollArea } from './ui/shadcn/scroll-area'
+import { useTheme } from '@/hooks/use-theme'
 
 export function CommandMenu() {
   const navigate = useNavigate()

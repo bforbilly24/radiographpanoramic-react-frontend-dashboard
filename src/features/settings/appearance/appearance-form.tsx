@@ -4,7 +4,7 @@ import { ChevronDownIcon } from '@radix-ui/react-icons'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { cn } from '@/lib/utils'
 import { toast } from '@/hooks/use-toast'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/shadcn/button'
 import {
   Form,
   FormControl,
@@ -13,8 +13,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+} from '@/components/ui/shadcn/form'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/shadcn/radio-group'
 
 const appearanceFormSchema = z.object({
   theme: z.enum(['light', 'dark'], {

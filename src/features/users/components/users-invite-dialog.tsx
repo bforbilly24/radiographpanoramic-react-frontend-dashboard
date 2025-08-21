@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { IconMailPlus, IconSend } from '@tabler/icons-react'
 import { toast } from '@/hooks/use-toast'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/shadcn/button'
 import {
   Dialog,
   DialogClose,
@@ -12,7 +12,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@/components/ui/shadcn/dialog'
 import {
   Form,
   FormControl,
@@ -20,9 +20,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+} from '@/components/ui/shadcn/form'
+import { Input } from '@/components/ui/shadcn/input'
+import { Textarea } from '@/components/ui/shadcn/textarea'
 import { SelectDropdown } from '@/components/select-dropdown'
 import { userTypes } from '../data/data'
 

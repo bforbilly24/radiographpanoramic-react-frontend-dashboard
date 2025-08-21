@@ -1,0 +1,11 @@
+// types/tanstack-router.d.ts
+import '@tanstack/react-router'
+
+declare module '@tanstack/react-router' {
+  interface Register {
+    // Extend the RouteContext interface
+    RouteContext: {
+      breadcrumb?: string;
+    }
+  }
+}

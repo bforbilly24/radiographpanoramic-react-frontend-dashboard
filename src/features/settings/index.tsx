@@ -6,23 +6,19 @@ import {
   IconTool,
   IconUser,
 } from '@tabler/icons-react'
-import { Separator } from '@/components/ui/separator'
-import { Header } from '@/components/layout/header'
-import { Main } from '@/components/layout/main'
-import { ProfileDropdown } from '@/components/profile-dropdown'
+import { Separator } from '@/components/ui/shadcn/separator'
+import { Header } from '@/components/layouts/dashboard/header'
+import { Main } from '@/components/layouts/dashboard/main'
 import { Search } from '@/components/search'
-import { ThemeSwitch } from '@/components/theme-switch'
 import SidebarNav from './components/sidebar-nav'
 
 export default function Settings() {
   return (
     <>
       {/* ===== Top Heading ===== */}
-      <Header>
-        <Search />
+      <Header fixed>
         <div className='ml-auto flex items-center space-x-4'>
-          <ThemeSwitch />
-          <ProfileDropdown />
+        <Search />
         </div>
       </Header>
 
@@ -53,26 +49,26 @@ const sidebarNavItems = [
   {
     title: 'Profile',
     icon: <IconUser size={18} />,
-    href: '/settings',
+    href: '/dashboard/settings',
   },
   {
     title: 'Account',
     icon: <IconTool size={18} />,
-    href: '/settings/account',
+    href: '/dashboard/settings/account',
   },
   {
     title: 'Appearance',
     icon: <IconPalette size={18} />,
-    href: '/settings/appearance',
+    href: '/dashboard/settings/appearance',
   },
   {
     title: 'Notifications',
     icon: <IconNotification size={18} />,
-    href: '/settings/notifications',
+    href: '/dashboard/settings/notifications',
   },
   {
     title: 'Display',
     icon: <IconBrowserCheck size={18} />,
-    href: '/settings/display',
+    href: '/dashboard/settings/display',
   },
 ]
