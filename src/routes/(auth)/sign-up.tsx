@@ -4,12 +4,14 @@ import Cookies from 'js-cookie'
 
 export const Route = createFileRoute('/(auth)/sign-up')({
   beforeLoad: () => {
-    const accessToken = Cookies.get('accessToken')
+    // Cek apakah user sudah login
+    const accessToken = Cookies.get('accessToken');
     
     if (accessToken) {
+      // Jika sudah login, redirect ke dashboard
       throw redirect({
         to: '/dashboard',
-      })
+      });
     }
   },
   component: SignUp,
